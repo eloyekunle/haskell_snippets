@@ -1,3 +1,5 @@
+-- https://www.hackerrank.com/challenges/fp-filter-array/problem
+
 module ArrayFilter where
 
 type ArrFilter = Int -> [Int] -> [Int]

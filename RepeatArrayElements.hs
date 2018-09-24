@@ -1,3 +1,5 @@
+-- https://www.hackerrank.com/challenges/fp-filter-array/problem
+
 module RepeatArrayElements where
 
 type RepElms = Int -> [Int] -> [Int]
