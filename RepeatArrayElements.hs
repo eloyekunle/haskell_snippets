@@ -1,4 +1,6 @@
-module Manips where
+module RepeatArrayElements where
+
+type RepElms = Int -> [Int] -> [Int]
 
 -- Doing it bottom up
 --------------------------
@@ -8,7 +10,7 @@ rep n x =
     then [x]
     else x : rep (n-1) x
 
-f :: Int -> [Int] -> [Int]
+f :: RepElms
 f _ [] = []
 f n (x:xs) =
   if null xs
@@ -18,7 +20,7 @@ f n (x:xs) =
 
 -- Using 'replicate'
 ---------------------------
-f2 :: Int -> [Int] -> [Int]
+f2 :: RepElms
 f2 _ [] = []
 f2 n (x:xs) =
   if null xs
@@ -28,21 +30,21 @@ f2 n (x:xs) =
 
 -- Using 'concatMap' with 'replicate'
 -------------------------------------
-f3 :: Int -> [Int] -> [Int]
+f3 :: RepElms
 f3 n = concatMap (replicate n)
 
 -- Or
 -----
-f5 :: Int -> [Int] -> [Int]
+f5 :: RepElms
 f5 = concatMap . replicate
 
 -- Or
-f6 :: Int -> [Int] -> [Int]
+f6 :: RepElms
 f6 n arr = arr >>= replicate n
 
 
 -- Using nested loops
 ------------------------------
-f4 :: Int -> [Int] -> [Int]
+f4 :: RepElms
 f4 n arr =
   [num | num <- arr, _ <- [1..n]]
